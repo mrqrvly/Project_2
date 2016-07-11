@@ -5,9 +5,9 @@
 //  Requires
 //  --------
 var express     = require('express'),
-    Reviews       = express.Router(),
+    Reviews     = express.Router(),
     mongoose    = require('mongoose'),
-    ReviewModel = require('../models/post'),
+    ReviewModel = require('../models/review'),
     fs          = require('fs');
 
 Reviews.route('/:id')
@@ -35,7 +35,7 @@ Reviews.route('/?')
   })
   // POST - add new review to the database
   .post(function(req, res, next) {
-    ReviewModel.create({title: 'This book was good.', content: 'I read this book recently and it was very good. It was well written and the story was engaging. You will probably like it too.', userid: 'abc123'}, function(err, user) {
+    ReviewModel.create({title: 'This book was good.', content: 'I read this book recently and it was very good. It was well written and the story was engaging. You will probably like it too.', userid: 'abc123'}, function(err, review) {
       console.log(review);
       console.log(err);
       res.json(review);

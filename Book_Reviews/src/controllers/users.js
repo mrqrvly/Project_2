@@ -13,16 +13,15 @@ var express   = require('express'),
 Users.route('/:id')
   // GET - a single resource by id
   .get(function(req, res, next) {
-    res.json({message: 'Here is record ' + req.params.id});
+    res.json({message: 'Here is user ' + req.params.id});
   })
   // PATCH - a single resource by id
   .patch(function(req, res, next) {
-    res.json({message: 'You updated record ' + req.params.id + '.'});
+    res.json({message: 'You updated user ' + req.params.id + '.'});
   })
   // DELETE - a single resource by id
   .delete(function(req, res, next) {
-    UserModel.
-    res.json({message: 'You deleted record ' + req.params.id + '.'});
+    res.json({message: 'You deleted user ' + req.params.id + '.'});
   })
 
 Users.route('/?')

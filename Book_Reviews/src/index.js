@@ -31,9 +31,9 @@ require('./db/database');
 //  Mount the controllers for use
 //  -----------------------------
 app.use('/users/?', require('./controllers/users'));
-app.use('/posts/?', require('./controllers/posts'));
+app.use('/reviews/?', require('./controllers/reviews'));
 app.use('/home/?', require('./controllers/home'));
-app.use('/login/?', require('./controllers/login'));
+app.use('/postreview/?', require('./controllers/postreview'));
 
 //  Start the server and listen at local port
 //  -----------------------------------------

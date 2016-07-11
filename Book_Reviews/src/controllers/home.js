@@ -2,10 +2,10 @@
 //  H O M E   C O N T R O L L E R
 //  =============================
 
-var express        = require('express'),
+var express     = require('express'),
     HomeControl = express.Router(),
-    UserModel      = require(__dirname + '/../models/user'),
-    bcrypt         = require('bcrypt');
+    UserModel   = require(__dirname + '/../models/user'),
+    bcrypt      = require('bcrypt');
 
 HomeControl.route('/usersonly/?')
   .get(function(req, res, next) {
@@ -14,7 +14,7 @@ HomeControl.route('/usersonly/?')
 
   HomeControl.route('/?')
     .get(function(req, res, next) {
-      res.render('home', {});
+      res.render('splash', {});
     })
 
     .post(function(req, res, next) {
