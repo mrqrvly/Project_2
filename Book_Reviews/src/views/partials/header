@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Express App with Authentication</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <p>Here's the header...</p>
+  </header>
+
+  <main>
+
