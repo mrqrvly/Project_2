@@ -30,17 +30,22 @@ Reviews.route('/?')
     ReviewModel.find(function(err, reviews) {
       console.log(reviews);
       console.log(err);
-      res.json(reviews);
+      res.render('community');
     })
   })
-  // POST - add new review to the database
+  
+
+  Reviews.route('/results')
+  // POST - add new user record to the database
   .post(function(req, res, next) {
-    ReviewModel.create({title: 'This book was good.', content: 'I read this book recently and it was very good. It was well written and the story was engaging. You will probably like it too.', userid: 'abc123'}, function(err, review) {
-      console.log(review);
-      console.log(err);
-      res.json(review);
-    })
-  })
+    books.search(req.body.title, function(error, result) {
+      if (!error) {
+        res.render('results', {'result': result});
+      } else {
+        console.log(error);
+      }
+    });
+  });
 
 //  Export so the index can access it
 //  ---------------------------------

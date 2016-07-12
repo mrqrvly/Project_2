@@ -4,16 +4,18 @@
 
 //  Requires
 //  --------
-var express   = require('express'),
-    Users     = express.Router(),
-    mongoose  = require('mongoose'),
-    UserModel = require('../models/user'),
-    fs        = require('fs');
+var express     = require('express'),
+    Users       = express.Router(),
+    mongoose    = require('mongoose'),
+    UserModel   = require('../models/user'),
+    ReviewModel = require('../models/review'),
+    fs          = require('fs'),
+    books       = require('google-books-search');
 
 Users.route('/:id')
   // GET - a single resource by id
   .get(function(req, res, next) {
-    res.json({message: 'Here is user ' + req.params.id});
+    res.render('useraccount');
   })
   // PATCH - a single resource by id
   .patch(function(req, res, next) {
@@ -22,25 +24,29 @@ Users.route('/:id')
   // DELETE - a single resource by id
   .delete(function(req, res, next) {
     res.json({message: 'You deleted user ' + req.params.id + '.'});
-  })
+  });
 
-Users.route('/?')
+Users.route('/allusers')
   // GET - access complete database of users
   .get(function(req, res, next) {
     UserModel.find(function(err, users) {
       console.log(users);
       console.log(err);
       res.json(users);
-    })
-  })
+    });
+  });
+  
+Users.route('/results')
   // POST - add new user record to the database
   .post(function(req, res, next) {
-    UserModel.create({username: 'mreading', password: '123450', firstname: 'mac', lastname: 'reading', email: 'mread@ing.com'}, function(err, user) {
-      console.log(user);
-      console.log(err);
-      res.json(user);
-    })
-  })
+    books.search(req.body.title, function(error, result) {
+      if (!error) {
+        res.render('results', {'result': result});
+      } else {
+        console.log(error);
+      }
+    });
+  });
 
 //  Export so the index can access it
 //  ---------------------------------

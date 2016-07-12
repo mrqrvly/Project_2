@@ -4,10 +4,12 @@
 
 //  Dependencies
 //  ------------
-var express = require('express'),
-    app     = express(),
-    exphbs  = require('express-handlebars'),
-    fs      = require('fs');
+var express    = require('express'),
+    app        = express(),
+    exphbs     = require('express-handlebars'),
+    fs         = require('fs'),
+    bodyParser = require('body-parser'),
+    session    = require('express-session');
 
 //  Setup handlebars view engine
 //  ----------------------------
@@ -19,6 +21,15 @@ app.engine('hbs', exphbs( {
 }));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
+app.use(bodyParser.urlencoded({extended: true}))
+
+//  Configures a user session
+app.use(session({
+  name:              'revlitbks',
+  resave:            false,
+  saveUninitialized: false,
+  secret:            'q9845i34nqf9483ut943jfai'
+}));
 
 //  Serviing static files
 //  ---------------------
@@ -28,12 +39,25 @@ app.use(express.static(__dirname + '/public'));
 //  -----------------------------
 require('./db/database');
 
+//......................................................................................//
+
+//  
+
+//......................................................................................//
+
 //  Mount the controllers for use
 //  -----------------------------
+app.use('/splash/?', require('./controllers/splash'));
+app.use('/users/?', function (req, res, next) {
+  if (req.session.isLoggedIn === true) {
+    return next();
+  } else {
+    res.redirect('/splash/?');
+  }
+});
 app.use('/users/?', require('./controllers/users'));
-app.use('/reviews/?', require('./controllers/reviews'));
-app.use('/home/?', require('./controllers/home'));
 app.use('/postreview/?', require('./controllers/postreview'));
+app.use('/reviews/?', require('./controllers/reviews'));
 
 //  Start the server and listen at local port
 //  -----------------------------------------

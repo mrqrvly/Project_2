@@ -11,9 +11,6 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema( {
   username:  String,
   password:  String,
-  firstname: String,
-  lastname:  String,
-  email:     String
 });
 
 //  Declare User as a model and attach the schema to it
