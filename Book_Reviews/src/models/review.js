@@ -12,6 +12,9 @@ var PostSchema = new mongoose.Schema( {
   userid:  String,
   title:   String,
   content: String,
+  book:    String,
+  authors: String,
+  image:   String
 });
 
 //  Declare Post as a model and attach the schema to it

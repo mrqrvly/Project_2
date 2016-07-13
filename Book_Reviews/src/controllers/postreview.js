@@ -10,24 +10,26 @@ mongoose    = require('mongoose'),
 ReviewModel = require('../models/review'),
 fs          = require('fs');
 
-NewReview.route('/?')
-  .get(function(req, res, next) {
-    for (var book in result) {
-      console.log(result[book].title);
-      console.log('-------------------------');
-    }
-    console.log(user._id);
-    res.render('postreview');
-  })
-
-  // POST - add new review to the database
+NewReview.route('/')
   .post(function(req, res, next) {
-    ReviewModel.create({title: 'This book was good.', content: 'I read this book recently and it was very good. It was well written and the story was engaging. You will probably like it too.', userid: 'abc123'}, function(err, review) {
-      console.log(review);
-      console.log(err);
-      res.json(review);
-    })
-  })
+    console.log(req.body)
+    ReviewModel.create({
+      userid:  req.session.userID,
+      title:   req.body.titletext,
+      content: req.body.reviewtext,
+      book:    req.body.book,
+      authors: req.body.authors,
+      image: req.body.image
+    }, function(err, review) {
+      if (err) {
+        console.log(err);
+        res.render('postreview', {error:err});
+      } else {
+        res.redirect('/users/' + req.session.userID);
+      };
+    });
+  });
+
 
 //  Export so the index can access it
 //  ---------------------------------

@@ -1,7 +1,16 @@
 
 <h2>Review Page</h2>
 
-<form method="post" action="/search">
+
+<img src="{{result.thumbnail}}" /><br>
+{{result.title}}<br>
+{{result.authors}}<br>
+
+<form method="post" action="/postreview">
+  <input type="text" name="titletext" placeholder="Title your review...">
   <input type="text" name="reviewtext" placeholder="Review this book..." />
+  <input type="hidden" name="book" value="{{result.title}}">
+  <input type="hidden" name="authors" value="{{result.authors}}">
+  <input type="hidden" name="image" value="{{result.thumbnail}}">
   <button>Submit</button>
 </form>

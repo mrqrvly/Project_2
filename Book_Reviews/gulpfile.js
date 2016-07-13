@@ -23,7 +23,7 @@ gulp.task('server', function() {
   var server = gls('./src/index.js', {NODE_ENV: 'development', PORT: 2666});
   server.start();
 
-  gulp.watch(['gulpfile.js', '.src/index.js', './src/controllers/**/*.js'], function() {
+  gulp.watch(['gulpfile.js', './src/index.js', './src/{controllers,models,lib}/**/*.js'], function() {
     server.start.bind(server)()
   });
 });

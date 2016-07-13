@@ -1,0 +1,12 @@
+
+<h2>Search Results Page</h2>
+
+<ul>
+  {{#each result}}
+    <li>
+      <a href="/reviews/results/{{this.id}}"><img src="{{this.thumbnail}}"></a><br>
+      <a href="/reviews/results/{{this.id}}">{{this.title}}</a><br>
+      <p>{{this.authors}}</p>
+    </li>
+  {{/each}}
+</ul>

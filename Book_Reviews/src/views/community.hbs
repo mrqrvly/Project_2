@@ -6,3 +6,16 @@
   <br />
   <button>Search</button>
 </form>
+
+<ul>
+  {{#each reviews}}
+    <li>
+      <img src="{{this.image}}"><br>
+      <h3>{{this.book}}</h3>
+      <h3>{{this.authors}}</h3>
+      <h4>{{this.title}}<h4>
+      <p>{{this.content}}<p>
+    </li>
+  {{/each}}
+</ul>
+

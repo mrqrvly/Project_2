@@ -8,45 +8,51 @@ var express     = require('express'),
     Reviews     = express.Router(),
     mongoose    = require('mongoose'),
     ReviewModel = require('../models/review'),
-    fs          = require('fs');
+    fs          = require('fs'),
+    books       = require('google-books-search');
 
-Reviews.route('/:id')
-  // GET = a single review by id
-  .get(function(req, res, next) {
-    res.json({message: 'Here is review # ' + req.params.id});
-  })
-  // PATCH = a single review by id
-  .patch(function(req, res, next) {
-    res.json({message: 'You updated review # ' + req.params.id});
-  })
-  // DELETE - a single post by id
-  .delete(function(req, res, next) {
-    res.json({message: 'You deleted review # ' + req.params.id + '.'});
-  })
-  
-Reviews.route('/?')
-  // GET - access complete database of reviews
+//  Define routes
+//  -------------  
+
+Reviews.route('/reviews')
+  // GET - see JSON of all reviews - for dev purposes - delete in production
   .get(function(req, res, next) {
     ReviewModel.find(function(err, reviews) {
-      console.log(reviews);
-      console.log(err);
-      res.render('community');
-    })
-  })
-  
+      res.json(reviews);
+    });
+  });
 
-  Reviews.route('/results')
-  // POST - add new user record to the database
+Reviews.route('/results/:id/?')
+  // GET - go to a new post page to post a review of the selected book
+  .get(function(req, res, next) {
+    books.lookup(req.params.id, function(error, result) {
+      res.render('postreview', {'result': result});
+    });
+  });
+
+Reviews.route('/results')
+  // POST - perform search for a title from the community reviews page
   .post(function(req, res, next) {
     books.search(req.body.title, function(error, result) {
       if (!error) {
-        res.render('results', {'result': result});
+        res.render('reresults', {'result': result});
       } else {
         console.log(error);
       }
     });
   });
 
-//  Export so the index can access it
+Reviews.route('/?')
+  // GET - render page of community review posts
+  .get(function(req, res, next) {
+    ReviewModel.find(function(err, reviews) {
+      reviews.reverse();
+      console.log(reviews);
+      res.render('community', {reviews: reviews});
+    }) 
+  });
+  
+  
+  //  Export so the index can access it
 //  ---------------------------------
 module.exports = Reviews;
