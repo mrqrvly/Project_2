@@ -1,5 +1,6 @@
 
-<h2>User Page</h2>
+
+<h2 class="page-title">User Page</h2>
 
 <h2>Hello, {{user.username}}.</h2>
 
@@ -8,15 +9,27 @@
   <br />
   <button>Search</button>
 </form>
+<br><br>
 
 <ul>
   {{#each reviews}}
-      <li>
-        <img src="{{this.image}}"><br>
-        <h3>{{this.book}}</h3>
-        <h3>{{this.authors}}</h3>
-        <h4>{{this.title}}<h4>
-        <p>{{this.content}}<p>
-      </li>
-  {{/each}}
-</ul>
+     <div class="col-lg-5 col-sm-5 reviewcard clearfix">
+        <li class="booklist">
+         <div class="reviewcard-bookplate row">
+          <div class="bookplate-image clearfix">
+            <img src="{{this.image}}">
+          </div>
+          <div class="bookplate-text">
+          <h3>{{this.book}}</h3>
+          <h3>{{this.authors}}</h3>
+          </div>
+         </div>
+         <div class="reviewcard-reviewplate row">
+          <p>{{this.title}}</p>
+          <p>{{this.content}}</p>
+         </div>
+        </li>
+     </div>
+    {{/each}}
+  </ul>   
+

@@ -1,5 +1,5 @@
 
-<h2>Community Page</h2>
+<h2 class="page-title">Community Page</h2>
 
 <form method="post" action="/reviews/results">
   <input type="text" name="title" placeholder="Search titles" />
@@ -7,15 +7,25 @@
   <button>Search</button>
 </form>
 
-<ul>
+  <ul>
   {{#each reviews}}
-    <li>
-      <img src="{{this.image}}"><br>
-      <h3>{{this.book}}</h3>
-      <h3>{{this.authors}}</h3>
-      <h4>{{this.title}}<h4>
-      <p>{{this.content}}<p>
-    </li>
-  {{/each}}
-</ul>
+     <div class="col-lg-5 col-sm-5 reviewcard clearfix">
+        <li class="booklist">
+         <div class="reviewcard-bookplate row">
+          <div class="bookplate-image clearfix">
+            <img src="{{this.image}}">
+          </div>
+          <div class="bookplate-text">
+          <h3>{{this.book}}</h3>
+          <h3>{{this.authors}}</h3>
+          </div>
+         </div>
+         <div class="reviewcard-reviewplate row">
+          <p>{{this.title}}</p>
+          <p>{{this.content}}</p>
+         </div>
+        </li>
+     </div>
+    {{/each}}
+  </ul>   
 
