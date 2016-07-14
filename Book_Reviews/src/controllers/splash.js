@@ -5,13 +5,8 @@
 var express       = require('express'),
     SplashControl = express.Router(),
     UserModel     = require(__dirname + '/../models/user'),
+    ReviewModel   = require(__dirname + '/../models/review'),
     bcrypt        = require('bcrypt');
-
-  SplashControl.route('/?')
-    // GET - renders splash page
-    .get(function(req, res, next) {
-      res.render('splash', {});
-    });
 
   SplashControl.route('/signup')
   // POST - username and password to the new account form
@@ -23,7 +18,7 @@ var express       = require('express'),
       }, function(err, user) {
         if (err) {
           console.log(err);
-          res.render('splash', {error:err});
+          res.render('splash', {error: err});
         } else {
           req.session.isLoggedIn = true;
           req.session.userID     = user._id;
@@ -59,7 +54,17 @@ var express       = require('express'),
   // GET - logout the user and return to the splash page
   .get(function(req, res, next) {
     req.session.isLoggedIn = false;
-    res.redirect('/splash/');
+    res.redirect('/');
   })
+  
+SplashControl.route('/?')
+    // GET - renders splash page
+    .get(function(req, res, next) {
+      ReviewModel.find(function(err, reviews) {
+        reviews.reverse();
+        reviews = reviews.slice(0, 11);
+        res.render('splash', {reviews: reviews});
+      });
+    });
 
 module.exports = SplashControl;

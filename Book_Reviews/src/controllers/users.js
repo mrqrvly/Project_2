@@ -28,11 +28,11 @@ Users.route('/:id')
   .get(function(req, res, next) {
     UserModel.findOne({_id: req.session.userID}, function(error, user) { 
       ReviewModel.find(function(err, reviews) {
+        reviews.reverse();
         var userReviews = [];
         for (var x in reviews) {
           if (reviews[x].userid === req.session.userID) {
             userReviews.push(reviews[x]);
-            userReviews.reverse();
           };
         };
         res.render('useraccount', {user:    user,
@@ -45,7 +45,6 @@ Users.route('/results/:id/?')
   // GET - go to a new post page to post a review of the selected book
   .get(function(req, res, next) {
     books.lookup(req.params.id, function(error, result) {
-        console.log(result.title);
       res.render('postreview', {'result': result});
     });
   });

@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 //  Define the post resource model
 //  ------------------------------
-var PostSchema = new mongoose.Schema( {
+var ReviewSchema = new mongoose.Schema( {
   userid:  String,
   title:   String,
   content: String,
@@ -19,4 +19,4 @@ var PostSchema = new mongoose.Schema( {
 
 //  Declare Post as a model and attach the schema to it
 //  ---------------------------------------------------
-module.exports = mongoose.model('Post', PostSchema)
+module.exports = mongoose.model('Review', ReviewSchema)

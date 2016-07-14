@@ -1,20 +1,32 @@
 
 <h2>Login</h2>
 
-<form method="post" action="/splash/login">
-  <input type="text" name="username" placeholder="Username" />
+<form method="post" action="/login">
+  <input type="text" name="username" placeholder="Username" minlength="8" />
   <br />
-  <input type="text" name="password" placeholder="Password" />
+  <input type="text" name="password" placeholder="Password" minlength="8" />
   <br />
   <button>Log in</button>
 </form>
 
 <h2>Sign up today!</h2>
 
-<form method="post" action="splash/signup">
-  <input type="text" name="username" placeholder="Choose a username..." />
+<form method="post" action="/signup">
+  <input type="text" name="username" placeholder="Choose a username..." minlength="8" />
   <br />
-  <input type="password" name="password" placeholder="Choose a password" />
+  <input type="password" name="password" placeholder="Choose a password" minlength="8" />
   <br />
   <button>Register</button>
 </form>
+
+<ul>
+  {{#each reviews}}
+    <li>
+      <img src="{{this.image}}">
+      <h3>{{this.book}}</h3>
+      <h3>{{this.authors}}</h3>
+      <p>{{this.title}}</p>
+      <p>{{this.content}}</p>
+    </li>
+  {{/each}}
+</ul>

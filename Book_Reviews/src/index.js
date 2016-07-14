@@ -21,7 +21,7 @@ app.engine('hbs', exphbs( {
 }));
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 
 //  Configures a user session
 app.use(session({
@@ -41,40 +41,13 @@ require('./db/database');
 
 //  Mount the controllers for use
 //  -----------------------------
-app.use('/splash/?', require('./controllers/splash'));
+app.use(require('./controllers/splash'));
 app.use('/users/?', require('./lib/access_control'));
 app.use('/users/?', require('./controllers/users'));
 app.use('/postreview/?', require('./lib/access_control'));
 app.use('/postreview/?', require('./controllers/postreview'));
 app.use('/reviews/?', require('./lib/access_control'));
 app.use('/reviews/?', require('./controllers/reviews'));
-
-
-app.route('/whatever/:id/?')
-   .get(function(req, res, next) {
-    req.originalParam = req.params.id;
-    req.params.id = 'Go fuck yourself';
-    next();
-  }, function(req, res, next) {
-    console.log('I made it hang...');
-    res.send('The original param was: ' + req.originalParam + '. It is now: ' + req.params.id);
-  });
-
-
-app.route('/whatever/?')
-  .get(function(req, res, next) {
-    req.mySpecialProp = 'Unicorns';
-    next();
-  }, function(req, res, next) {
-    if (req.mySpecialProp && req.mySpecialProp === 'Unicorns') {
-      console.log(req.mySpecialProp, '<----------- LOOK HERE!');
-    }
-    next();
-  }, function(req, res, next) {
-    console.log('I made it hang...');
-    res.send('We made it through 3 middleware. The special prop is: ' + req.mySpecialProp);
-  });
-
 
 //  Start the server and listen at local port
 //  -----------------------------------------
