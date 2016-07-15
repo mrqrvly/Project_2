@@ -2,6 +2,10 @@
 //  L O C A L   S E R V E R   F I L E
 //  =================================
 
+//  DotEnv
+//  ------
+require('dotenv').config({silent: true});
+
 //  Dependencies
 //  ------------
 var express    = require('express'),
@@ -51,6 +55,6 @@ app.use('/reviews/?', require('./controllers/reviews'));
 
 //  Start the server and listen at local port
 //  -----------------------------------------
-var server = app.listen(2666, function() {
+var server = app.listen(process.env.PORT || 2666, function() {
   console.log('Server listening at http://localhost:' + server.address().port);
 });
