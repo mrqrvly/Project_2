@@ -2,22 +2,20 @@
 
 <h2 class="page-title">User Page</h2>
 
-<h2>Hello, {{user.username}}.</h2>
+<h2 class="page-title">Hello, {{user.username}}.</h2>
 
-<form method="post" action="/users/results">
+<form method="post" action="/users/results" class="search-bar">
   <input type="text" name="title" placeholder="Search titles" />
-  <br />
   <button>Search</button>
 </form>
-<br><br>
 
-<ul>
+<ul class="clearfix">
   {{#each reviews}}
-     <div class="col-lg-5 col-sm-5 reviewcard clearfix">
+     <div class="col-lg-5 col-sm-5 reviewcard">
         <li class="booklist">
          <div class="reviewcard-bookplate row">
-          <div class="bookplate-image clearfix">
-            <img src="{{this.image}}">
+          <div class="bookplate-image">
+            <img class="review-image" src="{{this.image}}">
           </div>
           <div class="bookplate-text">
           <h3>{{this.book}}</h3>
@@ -25,7 +23,7 @@
           </div>
          </div>
          <div class="reviewcard-reviewplate row">
-          <p>{{this.title}}</p>
+          <p class="reviewcard-reviewtitle">{{this.title}}</p>
           <p>{{this.content}}</p>
          </div>
         </li>

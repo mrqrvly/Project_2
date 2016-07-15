@@ -6,9 +6,9 @@
 
 body,
 html {
-    width: 100%;
-    height: 100%;
-    background-color: #f8f8f8;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
 }
 
 body,
@@ -18,44 +18,49 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
 }
 
 /* Important styles */
 
-.topnav {
-    font-size: 16px; 
-    background-color: #f8f8f8
-    
+header {
+  height: 40px;
 }
 
-.page-title{
-  margin-top: 70px;
+a.topnav {
+  font-size: 22px; 
+  background-color: #f8f8f8   
 }
 
+.page-title {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding-left: 30px;
+}
+
+.search-bar {
+  margin-left: 30px;
+  margin-bottom: 30px
+}
 
 .lead {
-    font-size: 18px;
-    font-weight: 400;
-
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .intro-header {
-    padding-top: 10px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 5px;
-    text-align: center;
-    color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
-    background-size: cover;
-    border-style: solid;
-     margin-top: 20px;
-
-
+  padding-top: 10px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 5px;
+  text-align: center;
+  color: #f8f8f8;
+  background: url(../img/intro-bg.jpg) no-repeat center center;
+  background-size: cover;
+  border-style: solid;
 }
 
 .sign-up {
-  margin: 15px auto;
+  margin-bottom: 55px;
   width: 250px;
   padding: 10px 50px 50px;
   background: rgba(0, 0, 0, .6);
@@ -63,84 +68,42 @@ h6 {
   border-radius: 5px;
   float: right;
   color: grey;
-
-
 }
 
 .intro-message {
-    position: relative;
-    padding-top: 1%;
-    padding-bottom: 3%;
+  position: relative;
+  padding-top: 1%;
+  padding-bottom: 3%;
 }
 
 .intro-message > h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-    color: white;
-    padding-top: 5px;
-    border-style: solid, green;
-    background: rgba(0, 0, 0, .7);
-    display: inline-block;
+  margin: 0;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+  font-size: 3em;
+  color: white;
+  padding-top: 5px;
+  border-style: solid, green;
+  background: rgba(0, 0, 0, .7);
+  display: inline-block;
 }
 
 .intro-divider {
-    width: 0px;
-/*    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);*/
+  width: 0px;
 }
 
-
-
-/*.intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-}*/
-
-/*@media(max-width:767px) {
-    .intro-message {
-        padding-bottom: 15%;
-    }
-
-    .intro-message > h1 {
-        font-size: 3em;
-    }
-
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }*/
-
-    /*.intro-divider {
-        width: 20%;
-    }
-*/
-
-/*.network-name {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-*/
 .content-section-a {
-    padding: 20px 0;
-    background-color: #f8f8f8;
-    background-position: center;
-    display: inline;
-    border: 1px solid black;
+  padding: 20px 0;
+  background-color: #f8f8f8;
+  background-position: center;
+  display: inline;
+  border: 1px solid black;
 }
 
 .booklist {
   float: left;
-
 }
 
-.reviewcard{
+.reviewcard {
   border: 1px solid grey;
   border-radius: 2px;
   background-color: #f6f6f6;
@@ -148,68 +111,86 @@ h6 {
   margin: 0 4em 4em 0;
   padding: 1em;
   height: 550px;
-
+  overflow-y: scroll;
 }
 
-.reviewcard div{
+.search-result-list-item {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+
+.reviewcard div {
   margin: 1em;
 }
 
-ul{
+ul {
   list-style-type: none;
-
 }
 
-.bookplate-image{
-  width: 20%;
-
-}
-
-.bookplate-text{
-  width: 60%
-}
-
-.reviewcard-bookplate div{
+.reviewcard-bookplate div {
   float: left;
 }
 
+.reviewcard-reviewtitle {
+  font-style: italic;
+  font-size: 20px;
+}
+
+.bookplate-image {
+  width: 30%;
+}
+
+.review-image {
+  border: 4px solid darkgrey;
+  border-radius: 4px;
+}
+
+.bookplate-text {
+  width: 55%;
+  float: right;
+}
 
 .content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
+  padding: 50px 0;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .section-heading {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
+  float: left;
+  width: 200px;
+  border-top: 3px solid #e7e7e7;
 }
 
 .banner {
-    background-position: center;
-    padding: 5px 5px;
-    color: black;
-    border-top: solid;
-    background-color:#f8f8f8;
-    background-size: cover;
+  background-position: center;
+  padding: 5px 5px;
+  color: black;
+  border-top: solid;
+  background-color:#f8f8f8;
+  background-size: cover;
 }
 
 .banner ul {
-    padding-top: 20px;
-    margin-bottom: 10px;
-    float: right;
-   }
+  padding-top: 20px;
+  margin-bottom: 10px;
+  float: right;
+}
 
 footer {
-    padding: 20px 0;
-    background-color: #f8f8f8;
+  padding: 20px 0;
+  background-color: #f8f8f8;
+  border-top: 1px solid darkgrey;
 }
 
 p.copyright {
-    margin: 15px 0 0;
+  margin: 15px 0 0;
 }

@@ -12,7 +12,6 @@ fs          = require('fs');
 
 NewReview.route('/')
   .post(function(req, res, next) {
-    console.log(req.body)
     ReviewModel.create({
       userid:  req.session.userID,
       title:   req.body.titletext,

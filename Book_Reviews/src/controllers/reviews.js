@@ -47,7 +47,6 @@ Reviews.route('/?')
   .get(function(req, res, next) {
     ReviewModel.find(function(err, reviews) {
       reviews.reverse();
-      console.log(reviews);
       res.render('community', {reviews: reviews});
     }) 
   });

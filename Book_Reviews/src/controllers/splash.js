@@ -62,7 +62,7 @@ SplashControl.route('/?')
     .get(function(req, res, next) {
       ReviewModel.find(function(err, reviews) {
         reviews.reverse();
-        reviews = reviews.slice(0, 11);
+        reviews = reviews.slice(0, 4);
         res.render('splash', {reviews: reviews});
       });
     });
