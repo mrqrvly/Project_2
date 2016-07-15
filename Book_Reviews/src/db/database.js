@@ -8,8 +8,7 @@ var mongoose = require('mongoose');
 
 //  Location of the database
 //  ------------------------
-var connectionString = process.env.NODE_ENV === 'production' ? 'mongodb://revnotes_db:7625robmar8290@ds011890.mlab.com:11890/revnotes_db' :
-'mongodb://localhost/users';
+var connectionString = process.env.DB_HOST || 'mongodb://localhost/users';
 
 //  Connect to the database
 //  -----------------------
