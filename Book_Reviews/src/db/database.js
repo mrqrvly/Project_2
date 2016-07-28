@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 
 //  Location of the database
 //  ------------------------
-var connectionString = 'mongodb://localhost/users';
+var connectionString = process.env.DB_HOST;
+// 'mongodb://localhost/users'
 
 //  Connect to the database
 //  -----------------------

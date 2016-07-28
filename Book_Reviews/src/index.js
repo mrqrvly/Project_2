@@ -4,7 +4,7 @@
 
 //  DotEnv
 //  ------
-require('dotenv').config({silent: true});
+require('dotenv').config({ silent: true });
 
 //  Dependencies
 //  ------------
